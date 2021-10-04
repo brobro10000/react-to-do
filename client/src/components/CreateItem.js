@@ -24,7 +24,7 @@ function CreateItem() {
     const addToList = (e) => {
         console.log(e.target.parentNode.parentNode)
     }
-    console.log(Transition)
+    
     return (
         <Container className='addBtnContainer'>
             <Button className='addToQueueBtn' variant="outlined" onClick={handleClickOpen}>
