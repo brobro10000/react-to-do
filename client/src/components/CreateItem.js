@@ -3,11 +3,16 @@ import { Stack,Container, Button, Dialog, DialogActions, DialogTitle, Slide, Dia
 import AddIcon from '@mui/icons-material/Add';
 import StandardTextField from './StandardTextField';
 import RadioBtn from './RadioBtn';
+import {CREATE_TASK} from '../utils/actions'
+import { useSelector, useDispatch } from "react-redux";
+
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
 function CreateItem() {
+    const task = useSelector((state) => state.createTask)
+    const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     const importance = {title:'Importance', labels:['Urgent','Normal', 'Low']}
     // eslint-disable-next-line
@@ -22,7 +27,8 @@ function CreateItem() {
     };
 
     const addToList = (e) => {
-        console.log(e.target.parentNode.parentNode)
+        
+        setOpen(false)
     }
     
     return (
