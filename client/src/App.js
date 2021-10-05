@@ -14,7 +14,7 @@ import index from './pages';
 
 // import Loading from "./components/Loading";
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  uri: "graphql",
 });
 
 const authLink = setContext((_, { headers }) => {

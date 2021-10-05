@@ -9,6 +9,10 @@ const taskSchema = new Schema(
         importance: {
             type: String,
             required: true
+        },
+        createdAt: {
+            type: Number,
+            default: Date.now
         }
     }
 )

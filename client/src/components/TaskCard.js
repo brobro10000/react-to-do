@@ -18,7 +18,14 @@ function TaskCard(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        updateDate(new Date(Date.now()).toLocaleDateString())
+        var epochDate = props.date
+        var date1 = new Date(epochDate).toLocaleDateString()
+        var time = new Date(epochDate).toLocaleTimeString()
+        var dateOutput = `Created at ${time} on ${date1}`
+        updateDate(dateOutput)
+        console.log(epochDate, date1,time)
+        // date1.split(" (")[0]
+        // updateDate(Date("props.date").toLocalDateString())
         if(task.length > 0){
             if(task[0].title){
                 updateTitle(task[0].title)

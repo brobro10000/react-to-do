@@ -23,3 +23,12 @@ export const CREATE_USER = gql`
 `;
 ;
 
+export const CREATE_TASK_MUTATION = gql`
+mutation createTask($title: String!, $importance: String!) {
+  createTask(title: $title, importance: $importance) {
+    _id
+    title
+    importance
+  }
+}
+`

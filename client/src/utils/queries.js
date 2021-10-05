@@ -22,10 +22,11 @@ export const QUERY_USER = gql`
 
 export const QUERY_TASK = gql`
 {
-  task {
+  task(sortBy: { field: "createdAt", order: DESC }) {
     _id
     title
     importance
+    createdAt
   }
 }
 `

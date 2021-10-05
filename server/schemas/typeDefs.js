@@ -1,5 +1,15 @@
 const { gql } = require("apollo-server-express");
 const typeDefs = gql`
+  enum Order {
+   ASC
+   DESC
+  }
+
+  input SortBy {
+   field: String!
+   order: Order!
+  }
+
   type User {
     _id: ID
     username: String
@@ -11,6 +21,7 @@ const typeDefs = gql`
     _id: ID
     title: String
     importance: String
+    createdAt: Float
   }
 
   type Auth {
@@ -20,7 +31,7 @@ const typeDefs = gql`
 
   type Query {
     user: User
-    task: [Task]
+    task(sortBy: SortBy): [Task]
   }
 
   type Mutation {

@@ -1,5 +1,5 @@
 const db = require("../config/connection");
-const { User } = require("../models");
+const { User, Task } = require("../models");
 
 db.once("open", async () => {
   await User.deleteMany();
@@ -11,6 +11,8 @@ db.once("open", async () => {
   });
 
   console.log("user seeded");
+
+  await Task.deleteMany()
 
   console.log("all done!");
   process.exit(0);
