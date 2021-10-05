@@ -10,7 +10,7 @@ import {CREATE_TASK} from '../utils/actions'
 import { useSelector, useDispatch } from "react-redux";
 import {useState, useEffect} from 'react'
 
-function TaskCard() {
+function TaskCard(props) {
     const [title, updateTitle] = useState('')
     const [importance, updateImportance] = useState('')
     const [date, updateDate] = useState('')
@@ -33,12 +33,12 @@ function TaskCard() {
         <Container>
             <Card>
                 <CardHeader
-                    title={title}
+                    title={props.title}
                     subheader={date}
                 />
                 <CardContent>
                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                        Importance: {importance}
+                        Importance: {props.importance}
                     </Typography>
                 </CardContent>
             </Card>

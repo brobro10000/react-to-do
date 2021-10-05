@@ -1,9 +1,12 @@
-const { User } = require("../models");
+const { User, Task } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    task: async (parent,args) => {
+         return Task.find()
+    },
     user: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findById(context.user._id)
@@ -13,8 +16,10 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
   },
-
   Mutation: {
+    createTask: async (parent, args) => {
+      return Task.create(args)
+    },
     createUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);

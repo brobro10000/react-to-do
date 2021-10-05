@@ -2,7 +2,8 @@ import { createStore } from "redux";
 import { reducer } from './reducers'
 
 const initialState = {
-  createTask:[]
+  createTask:[],
+  currentTask:[]
 }
 
 export default createStore(
