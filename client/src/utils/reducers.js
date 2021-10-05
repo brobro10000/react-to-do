@@ -1,6 +1,8 @@
+import { accordionActionsClasses } from "@mui/material";
 import { useReducer } from "react";
 import {
   UPDATE_LOGIN,
+  CREATE_TASK
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -10,7 +12,11 @@ export const reducer = (state, action) => {
         ...state,
         currentForm: action.currentForm,
       };
-
+    case CREATE_TASK:
+      return {
+        ...state,
+        createTask: [...action.createTask]
+      }
     default:
       return state;
   }

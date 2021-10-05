@@ -2,7 +2,7 @@ import { createStore } from "redux";
 import { reducer } from './reducers'
 
 const initialState = {
-
+  createTask:[]
 }
 
 export default createStore(
