@@ -6,6 +6,7 @@ import { QUERY_TASK } from "../utils/queries";
 import {useEffect, useState} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import {CURRENT_TASK} from '../utils/actions'
+import SnackBar from "./SnackBar";
 
 function ToDoQueue() {
     const [taskOutput, setOutput] = useState(0)
@@ -37,6 +38,7 @@ function ToDoQueue() {
         <h1>Queue</h1>
         <CreateItem />
         {taskOutput ? taskOutput : <></>}
+        <SnackBar></SnackBar>
         </Container>
     )
 }

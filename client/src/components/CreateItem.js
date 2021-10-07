@@ -8,6 +8,7 @@ import { CREATE_TASK_MUTATION } from "../utils/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { CURRENT_TASK } from '../utils/actions';
 import { CREATE_TASK } from '../utils/actions';
+import { CONFIRM_ADDITION } from '../utils/actions';
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -31,6 +32,9 @@ function CreateItem() {
     };
 
     async function addToList(){
+
+
+
         setOpen(false)
         if(task.length > 0){
             task[0].createdAt = Date.now()
@@ -52,6 +56,10 @@ function CreateItem() {
             dispatch({
                 type:CURRENT_TASK,
                 currentTask: currentTask
+            })
+            dispatch({
+                type:CONFIRM_ADDITION,
+                confirm: true
             })
           } catch (e) {
             console.log(e);

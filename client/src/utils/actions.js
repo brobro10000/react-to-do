@@ -1,3 +1,4 @@
 export const UPDATE_LOGIN = "UPDATE_LOGIN";
 export const CREATE_TASK = "CREATE_TASK";
 export const CURRENT_TASK = "CURRENT_TASK";
+export const CONFIRM_ADDITION = "CONFIRM_ADDITION";

@@ -3,7 +3,8 @@ import { useReducer } from "react";
 import {
   UPDATE_LOGIN,
   CREATE_TASK,
-  CURRENT_TASK
+  CURRENT_TASK,
+  CONFIRM_ADDITION
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -23,7 +24,11 @@ export const reducer = (state, action) => {
         ...state,
         currentTask: [...action.currentTask]
       }
-
+    case CONFIRM_ADDITION:
+      return {
+        ...state,
+        confirm: action.confirm
+      }
     default:
       return state;
   }

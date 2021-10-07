@@ -3,7 +3,8 @@ import { reducer } from './reducers'
 
 const initialState = {
   createTask:[],
-  currentTask:[]
+  currentTask:[],
+  confirm: false
 }
 
 export default createStore(
