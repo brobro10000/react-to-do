@@ -17,6 +17,7 @@ function ToDoQueue() {
     });
     function loadInitialData(){
         if(data){
+            console.log(data)
             dispatch({
                 type:CURRENT_TASK,
                 currentTask:data.task
@@ -28,7 +29,7 @@ function ToDoQueue() {
     },[data,dispatch,loading])
     useEffect(() => {
         var output  = currentTask.map(item => (
-            <TaskCard title={item.title} importance={item.importance} date={item.createdAt}/>
+            <TaskCard id={item._id} title={item.title} importance={item.importance} date={item.createdAt}/>
             ))
         output.reverse()
         return setOutput(output)

@@ -17,6 +17,12 @@ const resolvers = {
     },
   },
   Mutation: {
+    deleteTask: async (parent,args) => {
+      console.log(args)
+      return Task.deleteOne(
+        {_id: args.id}
+      )},
+
     createTask: async (parent, args) => {
       return Task.create(args)
     },
