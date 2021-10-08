@@ -19,11 +19,10 @@ function TaskCard(props) {
     const [deleteTask] = useMutation(DELETE_TASK);
 
     async function deleteTaskFn(){
-        // document.getElementById(props.id).remove()
         try {
             const mutationResponse = await deleteTask({
               variables: {id:props.id},
-            }).then(data => document.getElementById(props.id).remove());
+            })
           } catch (e) {
             console.log(e);
           }
@@ -36,8 +35,6 @@ function TaskCard(props) {
         var dateOutput = `Created at ${time} on ${date1}`
         updateDate(dateOutput)
         console.log(epochDate, date1, time)
-        // date1.split(" (")[0]
-        // updateDate(Date("props.date").toLocalDateString())
         if (task.length > 0) {
             if (task[0].title) {
                 updateTitle(task[0].title)

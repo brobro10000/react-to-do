@@ -13,7 +13,7 @@ function ToDoQueue() {
     const currentTask = useSelector((state) => state.currentTask)
     const dispatch = useDispatch();
     const {loading, data} = useQuery(QUERY_TASK, {
-        pollInterval:3000
+        pollInterval:30000
     });
     function loadInitialData(){
         if(data){
