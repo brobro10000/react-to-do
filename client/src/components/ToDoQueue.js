@@ -30,22 +30,13 @@ function ToDoQueue() {
     },[data,dispatch])
     useEffect(() => {
         var output  = currentTask.map(item => (
-            <TaskCard id={item._id} title={item.title} importance={item.importance} date={item.createdAt}/>
+            <TaskCard key={item._id} id={item._id} title={item.title} importance={item.importance} date={item.createdAt}/>
             ))
         output.reverse()
         return setOutput(output)
     }, [currentTask])
     useEffect(()=> {
-        console.log(result)
-        subscribeToMore({
-            document:TASK_SUB,
-            updateQuery: (prev, {subscriptionData}) => {
-                console.log(prev,subscriptionData)
-                if(!subscriptionData.data) return prev;
-                const newFeedItem = subscriptionData.data
-                return newFeedItem
-            }
-        })
+        console.log(result,data)
     },[result])
     return (
         <Container>

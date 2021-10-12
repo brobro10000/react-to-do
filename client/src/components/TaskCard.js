@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { useMutation } from "@apollo/react-hooks";
 import { DELETE_TASK } from '../utils/mutations';
+import { QUERY_TASK } from '../utils/queries';
 
 function TaskCard(props) {
     const [title, updateTitle] = useState('')
@@ -16,7 +17,9 @@ function TaskCard(props) {
     const [date, updateDate] = useState('')
     const task = useSelector((state) => state.createTask)
     const dispatch = useDispatch();
-    const [deleteTask] = useMutation(DELETE_TASK);
+    const [deleteTask] = useMutation(DELETE_TASK,{
+        refetchQueries: [QUERY_TASK]
+    });
 
     async function deleteTaskFn(){
         try {
@@ -47,7 +50,7 @@ function TaskCard(props) {
 
     return (
         <Container>
-            <Card id={props.id}>
+            <Card>
                 <Grid container>
                     <Grid item md={11}>
                         <CardHeader

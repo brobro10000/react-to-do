@@ -9,12 +9,15 @@ import { useMutation } from "@apollo/react-hooks";
 import { CURRENT_TASK } from '../utils/actions';
 import { CREATE_TASK } from '../utils/actions';
 import { CONFIRM_ADDITION } from '../utils/actions';
+import { QUERY_TASK } from '../utils/queries';
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
 function CreateItem() {
-    const [createTask] = useMutation(CREATE_TASK_MUTATION);
+    const [createTask] = useMutation(CREATE_TASK_MUTATION, {
+        refetchQueries:[QUERY_TASK]
+    });
     const task = useSelector((state) => state.createTask)
     const currentTask = useSelector((state) => state.currentTask)
     const dispatch = useDispatch();

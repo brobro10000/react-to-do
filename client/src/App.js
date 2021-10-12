@@ -16,7 +16,7 @@ import index from './pages';
 import { WebSocketLink } from '@apollo/client/link/ws'
 
 const wsLink = new WebSocketLink({
-  uri:'ws://localhost:4000/subscriptions',
+  uri:'ws:localhost:4000/subscriptions',
   options: {
     reconnect:true
   }
@@ -51,7 +51,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  link: splitLink,
+  link: authLink.concat(splitLink),
   cache: new InMemoryCache(),
 });
 
