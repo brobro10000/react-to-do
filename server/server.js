@@ -1,6 +1,6 @@
-const {createServer} = require('http')
+const { createServer } = require('http')
 const { execute, subscribe } = require('graphql');
-const { SubscriptionServer } =require('subscriptions-transport-ws');
+const { SubscriptionServer } = require('subscriptions-transport-ws');
 const { makeExecutableSchema } = require('@graphql-tools/schema')
 const express = require("express");
 const path = require("path");
@@ -41,6 +41,15 @@ const db = require("./config/connection");
 
   await server.start();
   server.applyMiddleware({ app });
+
+  if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../client/build")));
+  }
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  });
+
+
 
   const PORT = 4000;
   httpServer.listen(PORT, () =>
