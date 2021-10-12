@@ -16,19 +16,21 @@ import index from './pages';
 import { WebSocketLink } from '@apollo/client/link/ws'
 
 const wsLink = new WebSocketLink({
-  uri:'/subscriptions',
+  uri:'ws://localhost:4000/subscriptions',
   options: {
     reconnect:true
   }
-})
+});
 
 const httpLink = createHttpLink({
-  uri: "graphql",
+  uri: "http://localhost:4000/graphql",
 });
 
 const splitLink = split(
   ({query}) => {
+    console.log(query)
     const definition = getMainDefinition(query);
+    console.log(definition)
     return(
       definition.kind === 'OperationDefinition' &&
       definition.operation === 'subscription'
@@ -49,7 +51,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  link: authLink.concat(splitLink),
+  link: splitLink,
   cache: new InMemoryCache(),
 });
 
