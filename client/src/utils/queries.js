@@ -30,3 +30,5 @@ export const QUERY_TASK = gql`
   }
 }
 `
+export const TASK_SUB = gql`
+`

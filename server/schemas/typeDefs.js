@@ -29,6 +29,10 @@ const typeDefs = gql`
     user: User
   }
 
+  type Subscription {
+    taskFeed: [Task]
+  }
+  
   type Query {
     user: User
     task(sortBy: SortBy): [Task]
