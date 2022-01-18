@@ -7,14 +7,11 @@ import {useEffect, useState} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import {CURRENT_TASK} from '../utils/actions'
 import SnackBar from "./SnackBar";
-import { TASK_SUB } from "../utils/subscriptions";
+import {DragDropContext, Droppable} from 'react-beautiful-dnd'
 function ToDoQueue() {
-    const [taskOutput, setOutput] = useState(0)
+    const [taskOutput, setOutput] = useState(0)     
     const currentTask = useSelector((state) => state.currentTask)
     const dispatch = useDispatch();
-    // const {loading, data} = useQuery(QUERY_TASK, {
-    //     pollInterval:30000
-    // });
     const {loading, subscribeToMore, data, ...result} = useQuery(QUERY_TASK)
     function loadInitialData(){
         if(data){
@@ -41,7 +38,7 @@ function ToDoQueue() {
     return (
         <Container>
         <h1>Queue</h1>
-        <CreateItem />
+        <CreateItem />``
         {taskOutput ? taskOutput : <></>}
         <SnackBar></SnackBar>
         </Container>
